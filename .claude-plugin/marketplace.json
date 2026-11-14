@@ -1,0 +1,17 @@
+{
+  "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
+  "name": "tato-plugins-official",
+  "description": "Tatolab's official Claude Code plugins.",
+  "owner": {
+    "name": "Tatolab",
+    "url": "https://github.com/tatolab"
+  },
+  "plugins": [
+    {
+      "name": "dev-plugin",
+      "source": "./plugins/dev-plugin",
+      "description": "Tatolab's development workflow: Linear-tracked issue lifecycle, reviewers, live verification and the repository rules for streamlib, Tato Studio and tatolab.com.",
+      "category": "development"
+    }
+  ]
+}

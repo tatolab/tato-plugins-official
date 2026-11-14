@@ -1,0 +1,10 @@
+{
+  "name": "dev-plugin",
+  "version": "0.1.0",
+  "description": "Tatolab's development workflow: Linear-tracked issue lifecycle, reviewers, live verification and the repository rules for streamlib, Tato Studio and tatolab.com.",
+  "author": {
+    "name": "Tatolab"
+  },
+  "repository": "https://github.com/tatolab/tato-plugins-official",
+  "license": "Apache-2.0"
+}
