@@ -46,7 +46,7 @@ yourself.
   developer experience, the code as it is now, what the code cannot show — is a finding to fix
   before the PR opens, and so is one clearer code would replace. An issue or PR reference, a
   date, a decision record or change narration in a comment is always a finding.
-- **Doc conventions and license headers.** New `.rs` files carry the BUSL header — never in
+- **Doc conventions and license headers.** New `.rs` and `.py` files carry the GPL-3.0-only header — never in
   a vendored third-party tree (`vendor/tatolab-vulkanalia{,-sys,-vma}`), where adding one
   is the licence violation. Those paths and nothing else — any other tree still carries it.
   Rustdoc one-line, no `# Example` sections. Learnings ship their index line.
