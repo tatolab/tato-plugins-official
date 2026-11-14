@@ -1,0 +1,26 @@
+name: Validate
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Install Claude Code
+        run: npm install -g @anthropic-ai/claude-code
+      - name: Validate the marketplace
+        run: claude plugin validate --strict .
+      - name: Validate dev-plugin
+        run: claude plugin validate --strict plugins/dev-plugin
+      - name: Run the plugin's script tests
+        run: for t in plugins/dev-plugin/scripts/tests/*.sh; do bash "$t" || exit 1; done
