@@ -19,8 +19,7 @@ or "boundary".
    caller, ports and adapters. Each gives the interface, a usage example, what it hides, its
    error taxonomy, and its trade-offs.
 3. **Compare on depth, locality and seam placement**, and give one recommendation, not a menu.
-4. **Record the chosen shape before code commits to it**, where the repo's CLAUDE.md says design
-   decisions live; failing that, in the Linear issue's description. What the shape needs from
+4. **Put the chosen shape in the Linear issue's description** before code commits to it. What the shape needs from
    another repo is an issue there, through `file-issue`, that this work is blocked by.
 
 The interface is the test surface: wanting to test past it means the module has the wrong shape.

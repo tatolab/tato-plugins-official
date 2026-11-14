@@ -1,6 +1,6 @@
 ---
 name: triage
-description: Work Linear's Triage inbox of public reports, and groom the projects so issues match the code and the plan. Use when Triage has items, or when the owner asks to clean up the tracker.
+description: Work Linear's Triage inbox of public reports, and groom the projects so issues match the code. Use when Triage has items, or when the owner asks to clean up the tracker.
 ---
 
 # Triage

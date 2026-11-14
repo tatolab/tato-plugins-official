@@ -16,7 +16,7 @@ only:
   external constraint.
 
 Outside those, an agent writes no comment. A comment never holds prose essays, decision records,
-issue or PR references, dates, or change history: git blame, git bisect, the issue and the plan hold
+issue or PR references, dates, or change history: git blame, git bisect and the issue hold
 those. Comments are not version history.
 
 A `FIXME` meets a high bar. It names a real defect left unfixed on purpose, never a style or
@@ -30,7 +30,7 @@ subagents, reviewers included, push back on a comment wherever clearer code woul
 ## Don't
 - Don't restate what the code does.
 - Don't narrate a change (`changed X to Y`, `now uses…`, `previously…`).
-- Don't record or justify a decision — that belongs on the issue, in the plan, or in the commit.
+- Don't record or justify a decision — that belongs on the issue or in the commit.
 - Don't cite an issue, a PR or a date.
 - Don't leave per-line play-by-play.
 - Don't leave breadcrumbs: `moved-to`, `was`, `carved-from`.

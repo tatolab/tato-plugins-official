@@ -8,8 +8,8 @@ description: Free-form what-if exploration of a direction before it becomes work
 A sandbox with no commitments: no work issues, and code only as a throwaway spike when that is the
 fastest way to answer a question. The owner brings a fuzzy want; give it a shape they can react to.
 
-1. **Situate.** Read the relevant code, what the repo's CLAUDE.md names as the record of what is
-   agreed, and the Linear issues around the idea. When the input is a messy set of issues, say
+1. **Situate.** Read the relevant code and the Linear issues and documents
+   around the idea. When the input is a messy set of issues, say
    back what they collectively want first.
 2. **Sharpen it with `grilling`.**
 3. **Sketch two or three genuinely different shapes.** For each: its unknowns, its size (one

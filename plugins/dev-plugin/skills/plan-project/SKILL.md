@@ -5,7 +5,7 @@ description: Turn an agreed goal or design into a Linear project with milestones
 
 # Plan a project
 
-The input is the agreed design — a design doc, a change proposal, or the project's own document
+The input is the agreed design — the project's own document
 in Linear. If the design still has open questions the work would have to guess through, say
 which and settle them with the owner first; issues cut from a half-agreed design are the
 expensive mistake here.
