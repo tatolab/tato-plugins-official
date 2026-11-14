@@ -24,7 +24,7 @@ description: The Electron boundary in tatolab-app: what may import electron, the
   the window's bridge through `window.parent`, and it is as trusted as its project's nodes. This is
   not a loosening of the seal, there is no sandbox mode, and it never goes back to the owner.
   Widening the window's `frame-src` to the folders Studio serves views from is part of serving
-  them. See `docs/views-run-with-full-access.md`.
+  them. The window lint refuses an `ImageBitmap` and a view frame's `sandbox`.
 - **The fuses stay flipped.** `RunAsNode`, `EnableNodeOptionsEnvironmentVariable` and
   `EnableNodeCliInspectArguments` off, `OnlyLoadAppFromAsar` on (and asar integrity on macOS):
   otherwise any process can run the signed app as plain Node and inherit its camera and

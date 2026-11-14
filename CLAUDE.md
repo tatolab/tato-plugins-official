@@ -5,6 +5,7 @@ each one lives in `plugins/<name>/` in the layout https://code.claude.com/docs/e
 describes.
 
 - **Work is tracked in Linear**, never in GitHub issues: team Tatolab, issues `TAT-n`.
+- Never write documentation, plans or ADRs, and never create Linear projects or milestones; planning happens in Linear, in separate sessions.
 - **One copy of everything.** A skill or agent exists once. Something only one repository needs
   carries that repository's prefix (`streamlib-`, `studio-`, `site-`). What a shared skill needs
   from a repository lives in that repository's `CLAUDE.md` section `## Before you push`, never in
