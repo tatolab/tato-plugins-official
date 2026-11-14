@@ -1,6 +1,6 @@
 {
   "name": "dev-plugin",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "description": "Common development plugins for working in Tatolab's repositories: skills for planning and building work tracked in Linear, reviewers and domain experts, live verification, the repositories' coding rules, and the Linear MCP server they rely on.",
   "author": {
     "name": "Tatolab"

@@ -23,7 +23,7 @@ You are the Vulkan RHI and GPU-failure specialist. You own everything that touch
 - **`TextureRegistration` is the single per-surface lifecycle record**, keyed by `surface_id`. Extend it; never spin up a parallel `HashMap<surface_id, …>`. **`TextureRing` is the single rotating-output abstraction** for decode / CPU-upload hot paths; never hand-roll a `Vec<Texture>` + index.
 - **Every device-wait routes through the one guarded wait path** that holds all queue mutexes in a fixed order. A raw device-wait-idle that skips the mutexes races a concurrent submit and corrupts the driver (an `xtask` lint bans raw calls).
 - **Vulkan spec constraints that don't move:** `vkDeviceWaitIdle` is externally synchronized over the device AND every queue it owns. `VkImageCreateInfo::initialLayout` may only be `UNDEFINED` or `PREINITIALIZED` — there is no "import already-in-layout-L" form, so cross-process layout is an application protocol (QFOT release/acquire), not shared state. The QFOT bridging fallback (`UNDEFINED → target`) is structurally permanent on NVIDIA Linux — the acquire-unmodified extension is not shipping there; do not treat the bridging path as interim.
-- **`vendor/tatolab-vulkanalia*` is untouchable** — vendored fork, stays Apache-2.0, never reformat or add a BUSL header.
+- **`vendor/tatolab-vulkanalia*` is untouchable** — vendored fork, stays Apache-2.0, never reformat or add a GPL header.
 - **vulkan-video code is historically mid-migration.** Do not cite its raw-`vulkanalia` construction patterns as precedent for new work — verify against the current RHI shape instead.
 
 ## What to re-derive from code (never cache here)
