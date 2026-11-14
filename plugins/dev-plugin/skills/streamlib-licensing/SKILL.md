@@ -10,7 +10,7 @@ description: The licensing rules for tatolab/streamlib (GPL-3.0-only and the ven
 - Every new `.rs` file starts with (and every new `.py` file with the same lines after `#`):
 
   ```rust
-  // Copyright (c) 2025 Jonathan Fontanez
+  // Copyright (c) 2025 Tatolab LLC
   // SPDX-License-Identifier: GPL-3.0-only
   ```
 
