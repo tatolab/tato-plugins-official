@@ -17,8 +17,8 @@ shorter name; suggest a more explicit one.** Explicit beats short, always.
   `buf`, `el`, `cb`, `res`.
 - Files are named for the one thing they hold, in `snake_case`, in TypeScript and scripts
   (`stream_log_readings.ts`, `run_tatolab_switch.ts`).
-- A platform item names the mechanism it drives (`ServiceManagementRuntimeLaunchAgent`,
-  `SystemdUserRuntimeService`), never `MacImpl` / `LinuxBackend`.
+- A platform item names the mechanism it drives (`command_line_tool_copied_out_of_the_appimage`,
+  `login_item_of_the_app_bundle`), never `MacImpl` / `LinuxBackend`.
 - CSS classes name what the element is in the window, not how it looks.
 
 Validated examples from this tree (do not shorten): `TatolabStatusPublisher`,

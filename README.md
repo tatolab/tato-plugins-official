@@ -1,6 +1,6 @@
 # Tatolab plugins
 
-Tatolab's Claude Code plugin marketplace: the skills, agents, hooks and MCP servers for working in
+Tatolab's Claude Code plugin marketplace: the skills, agents and MCP servers for working in
 Tatolab's repositories.
 
 ## Install
