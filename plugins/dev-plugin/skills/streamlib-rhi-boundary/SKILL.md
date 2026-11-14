@@ -24,12 +24,6 @@ description: The RHI boundary in tatolab/streamlib: where Vulkan calls may live 
   timeline wait/signal. When it needs more — an allocation, a copy, memory in another
   flavour — the engine does it on its own device and hands back something the process can
   import, the way a helper escalates an op to its parent. Processes that drove their own
-  Vulkan crashed, and NVIDIA crashes when two devices submit concurrently in one process
-  (`docs/learnings/nvidia-dual-vulkan-device-crash.md`). The one exception is a codec
+  Vulkan crashed, and NVIDIA crashes when two devices submit concurrently in one process. The one exception is a codec
   module's owned device, the only submitting device in its own process.
 
-Read before you change:
-- allocation / export / VMA config → `docs/learnings/vma-export-pools.md`,
-  `nvidia-dma-buf-after-swapchain.md`, `nvidia-opaque-fd-after-swapchain.md`.
-- any device-wait path → `docs/learnings/concurrent-vkdevicewaitidle-threading.md`.
-- sizing per-frame resources → `docs/learnings/vulkan-frames-in-flight.md`.

@@ -1,6 +1,6 @@
 ---
 name: streamlib-review-pr
-description: The single pre-PR reviewer, spawned by /implement before any PR opens. Adjudicates the branch diff against the Linear issue AND the plan — correctness, scope discipline, undeclared architecture, engine-model violations, test quality, naming, doc conventions — and returns a structured verdict. It never trusts the implementer's claims; it runs the checks itself.
+description: The single pre-PR reviewer, spawned by /implement before any PR opens. Adjudicates the branch diff against the Linear issue and the code — correctness, scope discipline, undeclared architecture, engine-model violations, test quality, naming, doc conventions — and returns a structured verdict. It never trusts the implementer's claims; it runs the checks itself.
 tools: Read, Bash, Grep, Glob, mcp__plugin_dev-plugin_linear__get_issue, mcp__plugin_dev-plugin_linear__list_comments, mcp__Linear__get_issue, mcp__Linear__list_comments
 model: opus
 ---
@@ -24,10 +24,7 @@ yourself.
   or something adjacent? Trace the changed paths; reason about edge
   cases, error handling, and the domain's known failure modes.
 - **Undeclared architecture.** Any new public trait, module, or cross-crate boundary in
-  the diff that the issue's change proposal (`docs/plan/changes/`, linked from the
-  issue or its project) does not name is a finding — a blocker when load-bearing. The diff must not
-  contradict a DECIDED entry in `docs/plan/ARCHITECTURE.md`; contradiction is ESCALATE,
-  not a silent pass.
+  the diff that the issue does not name is a finding — a blocker when load-bearing.
 - **Scope discipline.** Flag anything outside the issue's scope — an opportunistic
   refactor, an unrelated "while I was here" fix, a silent DRY extraction not called out.
   Findings, not gifts.
@@ -49,12 +46,11 @@ yourself.
 - **Doc conventions and license headers.** New `.rs` files carry the BUSL header — never in
   a vendored third-party tree (`vendor/tatolab-vulkanalia{,-sys,-vma}`), where adding one
   is the licence violation. Those paths and nothing else — any other tree still carries it.
-  Rustdoc one-line, no `# Example` sections. Learnings ship their index line.
-  Retired doc text is deleted, never struck, outside the records `${CLAUDE_PLUGIN_ROOT}/skills/streamlib-docs-policy/SKILL.md`
-  names.
+  Rustdoc one-line, no `# Example` sections. A new doc, plan or ADR file in the repo is a
+  blocker.
 
 ## How you run
-1. Read the Linear issue and its comments, its change proposal if any, and the full diff
+1. Read the Linear issue and its comments, and the full diff
    against the base.
 2. Run the tests and lints yourself — never report results you did not observe. A
    claimed test that doesn't exist or doesn't cover the claim is a finding.
@@ -70,7 +66,7 @@ Emit **exactly** this JSON object and nothing else:
 ```
 
 - `verdict` — `APPROVE` only when no blocker survives; `REJECT` when any blocker stands;
-  `ESCALATE` when only the owner can make the call (scope change, plan contradiction,
+  `ESCALATE` when only the owner can make the call (scope change, a design departure,
   ambiguous intent).
 - `findings[].severity` — `blocker` (must fix before merge), `should-fix` (a real
   defect; gates the PR exactly like a blocker — never ships as a note), `question`

@@ -31,7 +31,7 @@ target/release/tatolab-read-track http://127.0.0.1:14443 lab.hang encoded_video 
 ### 4. Read the dump
 The directory holds one `object-NNNNNN.bin` per object, `objects.jsonl` indexing them (`index`, `group_sequence`, `starts_group`, `timestamp_ns`, `file`, `payload`), and `catalog_entry.json`, the track's entry in the broadcast's catalog when one listed it. `payload` says what each file holds:
 - **`codec_payload_of_the_hang_legacy_container`** — an encoded video or audio port: each file is one codec packet. An H.264 / H.265 track's files concatenated in index order are an Annex-B `.h264` / `.hevc` stream ffmpeg decodes (`verify-live` § Reading pixels); an Opus track's are one packet each, with no container joining them. The dump opens on a group's first object, where a decoder can start.
-- **`as_sent`** — any other port: the payload the node wrote. Decode it with the port's wire contract (`docs/plan/ARCHITECTURE.md`).
+- **`as_sent`** — any other port: the payload the node wrote. Decode it with the producing node's declared fields (the `tatolab.stream` Protocols and `_built_in_nodes.py`).
 
 Interpreting it:
 - **`--count` objects written, sizes non-zero** — the port is producing.

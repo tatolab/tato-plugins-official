@@ -1,25 +1,21 @@
 ---
 name: streamlib-engine-doctrine
-description: The engine doctrine for tatolab/streamlib: the plan decides, one core system per concern, prohibited patterns and conventions. Use before designing or changing engine code in streamlib.
+description: The engine doctrine for tatolab/streamlib: the code is the truth, one core system per concern, prohibited patterns and conventions. Use before designing or changing engine code in streamlib.
 ---
 
 # Engine doctrine
 
 StreamLib is a game-engine-shaped substrate: one core system per concern, many consumers each.
 
-## The plan decides; sessions implement
+## The code is the truth; sessions implement
 
-- The architecture plan (`docs/plan/ARCHITECTURE.md` + `docs/plan/architecture.excalidraw`) is
-  the single source of architectural decisions. Linear issues implement the plan rather than
-  make architecture. If work needs a decision the plan doesn't state, **bring it to the owner** —
-  ask it while you keep going on what doesn't depend on it, or build your recommendation and
-  state it as an assumption in the PR. Don't infer it from existing code, consumers, or git
-  history; those show what is, not what was agreed.
-- Existing code that contradicts the plan is legacy to be replaced, not a pattern to accommodate.
-  A pivot updates the plan first; code follows. When the plan changes direction, the old shape is
-  ripped out — no parallel old/new coexistence.
-- Scope is what the Linear issue states, gated by the plan. Findings outside it go in the PR
-  description as notes, not into new issues and not into the diff.
+- Code is the only source of truth. Linear issues say what to build. If work needs an
+  architecture decision the issue doesn't state, **bring it to the owner** — ask it while you
+  keep going on what doesn't depend on it, or build your recommendation and state it as an
+  assumption in the PR.
+- When the owner changes direction, the old shape is ripped out — no parallel old/new coexistence.
+- Scope is what the Linear issue states. Findings outside it go in the PR description as notes,
+  not into new issues and not into the diff.
 
 ## Structure
 
@@ -28,8 +24,7 @@ StreamLib is a game-engine-shaped substrate: one core system per concern, many c
   Extend the existing one; a parallel abstraction is the default-wrong move.
 - **Engine-wide defects get fixed at the engine layer**, never bandaided in the consumer that
   surfaced them.
-- **Pattern migrations cover the engine tree only** — runtime, SDK, adapters, engine tests,
-  docs. Consumers are never in a migration's scope: a converted consumer's breakage is filed as
+- **Pattern migrations cover the engine tree only** — runtime, SDK, adapters, engine tests. Consumers are never in a migration's scope: a converted consumer's breakage is filed as
   tracked backlog at that consumer; held pre-pivot consumers lag by design.
 
 Prohibited in library code (tests/examples exempt):
