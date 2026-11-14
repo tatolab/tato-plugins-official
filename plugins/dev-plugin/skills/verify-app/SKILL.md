@@ -90,7 +90,7 @@ Evidence counts only when it was shot on what would ship now:
    npx vitest run src/main/local_api_client.test.ts`.
 3. **Live on the machine.** Only for what the test root cannot reach: Gatekeeper, TCC prompts,
    the real `~/.local/bin/tatolab` link. This
-   acts on the owner's real runtime — the `machine-brake` hook notes it — so say what you will
+   acts on the owner's real runtime, so say what you will
    run, run it only when the owner asked for this proof, and restore what you changed. Label
    **Live**.
 4. **Linux.** On x86_64 Linux: `apps/tato-app/scripts/build-tatolab-linux-app.sh [--local-proof-test-root]`,

@@ -24,7 +24,7 @@ Write a comment only when it carries information you can't get by reading the co
 - Give each public item (a TypeScript `export`) a one-line doc.
 - Comment a wire contract — a local API field, an MCP tool result's shape, a window IPC command's
   payload.
-- Comment a platform quirk: an `SMAppService` status, a `launchctl` exit, a systemd unit state, a
+- Comment a platform quirk: an `SMAppService` status, a
   Chromium-in-Electron difference between macOS and Linux (window chrome, the tray, notifications).
 - Comment a non-obvious external constraint (code signing, notarization, the bundle's seal, APFS
   case-folding).

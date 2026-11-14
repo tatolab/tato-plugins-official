@@ -56,6 +56,6 @@ description: The platform doctrine for tatolab-app: where platform code lives an
   Check for Updates… (a packaged app) · Quit Tato Studio. An update installs only when the person
   chooses it. Changing any of these is a decision.
 - **macOS changes are proven on macOS, Linux changes on Linux.** A Mac cannot run the Linux module
-  against a real systemd or desktop; an x86_64 Linux machine or an `ubuntu:22.04` container is the
+  against a real Linux desktop; an x86_64 Linux machine or an `ubuntu:22.04` container is the
   gate for it. Linux proof without a Linux machine runs in a container and is labelled so (a
   runtime stand-in is named a stand-in).

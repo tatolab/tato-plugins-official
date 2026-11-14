@@ -1,7 +1,7 @@
 # dev-plugin
 
 The common development plugins for working in Tatolab's repositories. Install it once and every
-Tatolab repository gets the same skills, agents, hooks and MCP servers; each repository's
+Tatolab repository gets the same skills, agents and MCP servers; each repository's
 `.claude/settings.json` enables it.
 
 ## Install
@@ -19,17 +19,14 @@ Tatolab repository gets the same skills, agents, hooks and MCP servers; each rep
   (`streamlib-`, `studio-`, `site-`), so one plugin serves every repository without collisions.
 - **MCP servers** the skills rely on are declared in `.mcp.json`. Today that is Linear's, where
   Tatolab tracks work; Claude Code asks you to sign in to it on first use.
-- **Hooks** are in `hooks/hooks.json`. Each hook's config says where it runs, never its code.
-  The machine-brake hook reads `hooks/machine-brake.json`, then `~/.claude/machine-brake.json`
-  and a project's `.claude/machine-brake.local.json`; `scripts/machine-brake` edits them.
 
-`claude plugin details dev-plugin@tato-plugins-official` lists every skill, agent, hook and server
+`claude plugin details dev-plugin@tato-plugins-official` lists every skill, agent and server
 it installs.
 
 ## Setup
 
 Sign in to Linear when Claude Code prompts. `attach-artifact` needs the Infisical CLI signed in
-and `wrangler`. The machine-brake hook needs `jq`, and stays silent without it.
+and `wrangler`.
 
 ## Privacy
 

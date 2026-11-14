@@ -11,7 +11,8 @@ describes.
   the skill.
 - **Paths inside the plugin** are written `${CLAUDE_PLUGIN_ROOT}/…` in skills, agents and hooks.
   Repository paths stay relative to the repository a session works in.
-- **Guards note or ask; they never deny.** A hook never returns `deny` and never exits 2.
+- **No hooks.** What a session may run is decided by Claude Code's permissions and auto mode
+  policy, never by a hook in this plugin.
 - **A new agent** states the knowledge it captures that can't be derived from the code, why the
   existing agents don't cover it, and its model tier: `opus` for implementation and reasoning,
   `sonnet` for mechanical steps, never `fable`.
