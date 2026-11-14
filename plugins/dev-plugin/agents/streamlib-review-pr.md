@@ -1,7 +1,7 @@
 ---
 name: streamlib-review-pr
 description: The single pre-PR reviewer, spawned by /implement before any PR opens. Adjudicates the branch diff against the Linear issue AND the plan — correctness, scope discipline, undeclared architecture, engine-model violations, test quality, naming, doc conventions — and returns a structured verdict. It never trusts the implementer's claims; it runs the checks itself.
-tools: Read, Bash, Grep, Glob, mcp__Linear__get_issue, mcp__Linear__list_comments
+tools: Read, Bash, Grep, Glob, mcp__plugin_dev-plugin_linear__get_issue, mcp__plugin_dev-plugin_linear__list_comments, mcp__Linear__get_issue, mcp__Linear__list_comments
 model: opus
 ---
 

@@ -1,7 +1,7 @@
 {
   "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
   "name": "tato-plugins-official",
-  "description": "Tatolab's official Claude Code plugins.",
+  "description": "Tatolab's official Claude Code plugins for working in Tatolab's repositories.",
   "owner": {
     "name": "Tatolab",
     "url": "https://github.com/tatolab"
@@ -10,7 +10,7 @@
     {
       "name": "dev-plugin",
       "source": "./plugins/dev-plugin",
-      "description": "Tatolab's development workflow: Linear-tracked issue lifecycle, reviewers, live verification and the repository rules for streamlib, Tato Studio and tatolab.com.",
+      "description": "Common development plugins for working in Tatolab's repositories: skills for planning and building work tracked in Linear, reviewers and domain experts, live verification, the repositories' coding rules, and the Linear MCP server they rely on.",
       "category": "development"
     }
   ]

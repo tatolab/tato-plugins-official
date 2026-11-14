@@ -1,5 +1,8 @@
 {
   "mode": "warn",
+  "active_in_projects_with": [
+    "apps/tato-app"
+  ],
   "rules": {
     "publish": "ask"
   }

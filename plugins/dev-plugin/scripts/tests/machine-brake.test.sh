@@ -13,7 +13,7 @@ test_home="$(mktemp -d)"
 # An empty plugin root keeps the shipped defaults out of every case but the one that checks them.
 test_plugin_root="$(mktemp -d)"
 trap 'rm -rf "$test_project" "$test_home" "$test_plugin_root"' EXIT
-mkdir -p "$test_project/.claude" "$test_project/apps/tato-app"
+mkdir -p "$test_project/.claude"
 # A test-root unit carries streamlib's marker and drives only a runtime under a test root; a unit
 # without it is a real runtime's, whose CLI drives the owner's runtime.
 test_root_unit="$test_project/test-root-streamlib/target/tatolab-runtime"
@@ -155,17 +155,12 @@ expect silent "cat > notes.md <<'NOTES'
 launchctl bootout gui/501/com.tatolab.tatolabd
 NOTES"
 
-# Outside Tato Studio's repository the hook says nothing.
-if [ -z "$(jq -n '{tool_input: {command: "launchctl kickstart -k gui/501/x"}}' \
-  | HOME="$test_home" CLAUDE_PLUGIN_ROOT="$test_plugin_root" CLAUDE_PROJECT_DIR="$test_home" bash "$hook")" ]; then
-  echo "ok   silent outside Tato Studio's repository"
-else
-  echo "FAIL noted a command outside Tato Studio's repository"; failures=$((failures + 1))
-fi
-
-# The shipped defaults ask before a publish.
+# The shipped defaults run only in a project that holds apps/tato-app, and there ask before a publish.
 plugin_root_for_case="$(cd "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd)"
+expect silent 'gh release upload v0.46.0 build/x.dmg'
+mkdir -p "$test_project/apps/tato-app"
 expect ask 'gh release upload v0.46.0 build/x.dmg'
+rm -rf "$test_project/apps"
 unset plugin_root_for_case
 
 # Config: a rule set to ask prompts; an allow glob silences; an ask glob prompts on anything.

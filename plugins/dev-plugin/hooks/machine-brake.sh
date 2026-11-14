@@ -6,7 +6,8 @@
 #
 # Config — the plugin's hooks/machine-brake.json (defaults), ~/.claude/machine-brake.json,
 # .claude/machine-brake.json (checked in) and .claude/machine-brake.local.json (yours,
-# untracked), read in that order. Later files win on
+# untracked), read in that order. `active_in_projects_with` lists paths, relative to the
+# project, one of which a project must hold for the hook to run; empty runs it everywhere. Later files win on
 # `mode`, `rules` and `preferences`; `allow` and `ask` lists concatenate.
 #
 #   {
@@ -28,8 +29,6 @@ RULE_NAMES='launchctl_job systemd_service machine_runtime app_launch brew_cask m
 plugin_root="${CLAUDE_PLUGIN_ROOT:-$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)}"
 HELPER="$plugin_root/scripts/machine-brake"
 root="${CLAUDE_PROJECT_DIR:-$(pwd)}"
-# Its rules and advice are Tato Studio's, so it stays silent in every other repository.
-[ -d "$root/apps/tato-app" ] || exit 0
 command -v jq >/dev/null 2>&1 || exit 0
 
 # ── config ───────────────────────────────────────────────────────────
@@ -50,7 +49,7 @@ config="$(printf '%s\n' "${fragments[@]}" | jq -s --arg names "$RULE_NAMES" '
   def strings_or_empty: if type == "array" then map(strings) else [] end;
   ($names | split(" ")) as $known
   | reduce .[] as $raw (
-      {mode: "warn", rules: {}, allow: [], ask: [], preferences: "", invalid: []};
+      {mode: "warn", rules: {}, allow: [], ask: [], preferences: "", active_in_projects_with: [], invalid: []};
       ($raw | object_or_empty) as $c
       | .mode = (if ($c.mode | outcome) then $c.mode else .mode end)
       | .invalid += (if $c.mode != null and ($c.mode | outcome | not) then ["mode=\($c.mode | tojson)"] else [] end)
@@ -61,7 +60,8 @@ config="$(printf '%s\n' "${fragments[@]}" | jq -s --arg names "$RULE_NAMES" '
                            | "rules.\(.key)=\(.value | tojson)"))
       | .allow += ($c.allow | strings_or_empty)
       | .ask += ($c.ask | strings_or_empty)
-      | .preferences = (if ($c.preferences | type) == "string" then $c.preferences else .preferences end))
+      | .preferences = (if ($c.preferences | type) == "string" then $c.preferences else .preferences end)
+      | .active_in_projects_with = (if ($c.active_in_projects_with | type) == "array" then ($c.active_in_projects_with | map(strings)) else .active_in_projects_with end))
 ')"
 invalid_entries="$(jq -r '.invalid | join(", ")' <<<"$config")"
 [ -z "$invalid_entries" ] \
@@ -72,6 +72,16 @@ if [ "${1:-}" = "--show-config" ]; then
     '{config: del(.invalid), sources: $ARGS.positional, problems: $problems}' \
     "${config_files[@]}" <<<"$config"
   exit 0
+fi
+
+# A config that names project paths limits the hook to projects holding one of them.
+active_paths="$(jq -r '.active_in_projects_with[]' <<<"$config")"
+if [ -n "$active_paths" ] && [ "${1:-}" != "--show-config" ]; then
+  active_here=""
+  while IFS= read -r active_path; do
+    [ -e "$root/$active_path" ] && active_here=yes
+  done <<<"$active_paths"
+  [ -n "$active_here" ] || exit 0
 fi
 
 # ── the command ──────────────────────────────────────────────────────

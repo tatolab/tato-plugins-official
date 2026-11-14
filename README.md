@@ -1,7 +1,7 @@
 # Tatolab plugins
 
-The Claude Code plugin marketplace for Tatolab. It holds the agent customizations that used to
-live in each repository's `.claude/` folder: skills, subagents, hooks and their scripts.
+Tatolab's Claude Code plugin marketplace: the skills, agents, hooks and MCP servers for working in
+Tatolab's repositories.
 
 ## Install
 
@@ -16,11 +16,9 @@ folder.
 
 ## Plugins
 
-- **dev-plugin**: how Tatolab builds software. It covers the Linear-tracked issue lifecycle
-  (`file-issue`, `plan-project`, `implement`, `whats-next`, `triage`), design and debugging skills,
-  streamlib's plan lifecycle and live verification, Tato Studio's app verification, the
-  repository rules as skills (`streamlib-*`, `studio-*`), the reviewers and domain experts, and
-  the machine-brake hook. See [its README](plugins/dev-plugin/README.md).
+- **dev-plugin**: the common development plugins for working in Tatolab's repositories. See
+  [its README](plugins/dev-plugin/README.md); `claude plugin details dev-plugin@tato-plugins-official`
+  lists everything it installs.
 
 ## Working on this repository
 

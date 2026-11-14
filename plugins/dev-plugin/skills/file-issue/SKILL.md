@@ -5,7 +5,7 @@ description: File a piece of work in Linear — one issue, or a parent with one 
 
 # File an issue
 
-Issues live in Linear, team **Tatolab** (`TAT`), reached through the `mcp__Linear__*` tools.
+Issues live in Linear, team **Tatolab** (`TAT`), reached through the Linear MCP tools (dev-plugin declares the `linear` server).
 Never create, edit or comment on a GitHub issue.
 
 1. **Look for it first.** Search Linear for an existing issue that covers the intent; extend or
