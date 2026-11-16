@@ -11,8 +11,9 @@ shorter name; suggest a more explicit one.** Explicit beats short, always.
 
 - Encode relationship + role + direction: `FromUpstream`, `ToDownstream`, `Input`, `Output`.
 - No bare generic words: never just `Writer`, `Reader`, `Handle`, `Manager`, `State`, `ctx`, `buf`.
+- A node is one unit in a stream's graph. "Processor" is not a word in streamlib: say node.
 
 Validated examples (do not shorten): `LinkOutputDataWriter`, `LinkInputDataReader`,
-`LinkInputFromUpstreamProcessor`, `LinkOutputToDownstreamProcessor`,
-`add_link_output_data_writer()`, `set_link_output_to_processor_message_writer()`. A 43-character
+`LinkInputFromUpstreamNode`, `LinkOutputToDownstreamNode`,
+`add_link_output_data_writer()`, `set_link_output_to_node_message_writer()`. A 43-character
 name is fine.

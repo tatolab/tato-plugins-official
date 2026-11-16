@@ -12,9 +12,9 @@ Tatolab repository gets the same skills, agents and MCP servers; each repository
 
 ## How it fits a repository
 
-- **Shared skills** take what one repository needs, such as its gates, its reviewers and the proof
-  a change needs, from that repository's `CLAUDE.md` section `## Before you push`. They hold no
-  repository paths.
+- **Shared skills** work in every repository. Where one repository needs something different, such
+  as its gates, its reviewers and the proof a change needs, the skill lists it per repository
+  (`implement`'s step 8).
 - **Repository-specific skills and agents** carry the repository's prefix in their name
   (`streamlib-`, `studio-`, `site-`), so one plugin serves every repository without collisions.
 - **MCP servers** the skills rely on are declared in `.mcp.json`. Today that is Linear's, where
