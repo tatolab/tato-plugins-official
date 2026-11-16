@@ -7,7 +7,7 @@ description: The RHI boundary in tatolab/streamlib: where Vulkan calls may live 
 
 - **Nothing outside the RHI touches `vulkanalia`.** Host-side RHI is
   `runtime/streamlib-engine/src/vulkan/rhi/`; the consumer-side carve-out is
-  `runtime/streamlib-consumer-rhi/`. Together they own every `vulkanalia` call. Processors,
+  `runtime/streamlib-consumer-rhi/`. Together they own every `vulkanalia` call. Nodes,
   codecs, adapters go through `GpuContext`, never raw Vulkan or `HostVulkanDevice`. `ash` is gone;
   never reintroduce it. `cargo xtask check-boundaries` enforces.
 - **One kernel abstraction per pipeline kind** (`VulkanComputeKernel`, graphics, ray-tracing).

@@ -13,7 +13,7 @@ Ends a stream's work without touching the runtime. The machine's runtime stays o
 ```bash
 tatolab stop --dir <project directory>
 ```
-Queues the stop of the whole project (`--dir` defaults to the working directory) and prints its action id at once (`<action> queued: stop of <project>`); every stream of the project shows `stopping` until the stop has run, then `stopped` — still loaded, its graph there to read and edit, every processor instance and device claim released — and the project stays stopped across the runtime's restarts until `tatolab play` plays it again. `tatolab close` also unloads every stream of it, until `tatolab open`. A project runs and stops as a whole: no verb stops one stream of it. A failed action naming a stream that was not recorded stopped means a restart of the runtime loads that stream again.
+Queues the stop of the whole project (`--dir` defaults to the working directory) and prints its action id at once (`<action> queued: stop of <project>`); every stream of the project shows `stopping` until the stop has run, then `stopped` — still loaded, its graph there to read and edit, every node instance and device claim released — and the project stays stopped across the runtime's restarts until `tatolab play` plays it again. `tatolab close` also unloads every stream of it, until `tatolab open`. A project runs and stops as a whole: no verb stops one stream of it. A failed action naming a stream that was not recorded stopped means a restart of the runtime loads that stream again.
 
 ```bash
 tatolab rm --dir <project directory>

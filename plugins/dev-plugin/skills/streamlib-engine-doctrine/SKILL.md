@@ -20,7 +20,7 @@ StreamLib is a game-engine-shaped substrate: one core system per concern, many c
 ## Structure
 
 - **Search first, extend never parallel.** Before adding any trait / struct / helper / module,
-  prove no core system already covers the concern (RHI, `GpuContext`, pubsub, processor model).
+  prove no core system already covers the concern (RHI, `GpuContext`, pubsub, node model).
   Extend the existing one; a parallel abstraction is the default-wrong move.
 - **Engine-wide defects get fixed at the engine layer**, never bandaided in the consumer that
   surfaced them.

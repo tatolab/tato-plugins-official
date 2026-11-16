@@ -23,10 +23,10 @@ You are the Linux media-capture and environment specialist. You own the seams wh
 - **v4l2loopback needs `exclusive_caps=0`** (caps=1 breaks ffmpeg→loopback writes) and does not tolerate `poll()` before `VIDIOC_STREAMON` — a strict-conformance driver that has exposed real MMAP-path bugs the permissive vivid driver hides.
 - **A FAILED cross-device DMA-BUF import probe still perturbs NVIDIA's OPAQUE_FD allocation accounting.** A `vkAllocateMemory` chained with an import-FD info is NOT side-effect-free on NVIDIA even when it returns cleanly; per-handle-type kernel accounting carries forward. Gate such probes by vendor where the engine already does.
 - **GPU work belongs to the engine** — a helper only imports (FD import + bind + map + layout transitions + timeline wait/signal); allocation, modifier choice, copies and kernel construction all live in the parent. The RHI boundary (`${CLAUDE_PLUGIN_ROOT}/skills/streamlib-rhi-boundary/SKILL.md`) applies to any capture code you touch.
-- **Camera / display processor code goes through `GpuContext`, never raw Vulkan.** DMA-BUF import and modifier handling that crosses into Vulkan belongs behind the RHI.
+- **Camera / display node code goes through `GpuContext`, never raw Vulkan.** DMA-BUF import and modifier handling that crosses into Vulkan belongs behind the RHI.
 
 ## What to re-derive from code (never cache here)
-The camera processor's file layout, the exact V4L2 buffer-management APIs, the modifier-probe entry points, and the fixture-script names all drift. Read the tree and the fixture scripts under the engine's `tests/fixtures/` at need, and cite `file:line`. When a learning or arch doc names a device index, driver version, or file path, treat it as the best-known state when written and confirm against a live probe or the current tree.
+The camera node's file layout, the exact V4L2 buffer-management APIs, the modifier-probe entry points, and the fixture-script names all drift. Read the tree and the fixture scripts under the engine's `tests/fixtures/` at need, and cite `file:line`. When a learning or arch doc names a device index, driver version, or file path, treat it as the best-known state when written and confirm against a live probe or the current tree.
 
 ## Environment note
 You cannot observe GPU/IPC *runtime* from a sandboxed Bash session (it dies with exit 144). Live camera/display verification is human-run via the `/verify-live` skill — build and probe here, hand the run to the owner's terminal. Read-only device query verbs are fine.
