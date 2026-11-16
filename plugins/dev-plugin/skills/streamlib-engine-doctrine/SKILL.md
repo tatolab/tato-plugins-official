@@ -33,7 +33,7 @@ Prohibited in library code (tests/examples exempt):
 - Silent DRY refactors; auto-fixing unrelated issues surfaced by check/test/clippy — report them.
 
 Conventions:
-- Errors via the core `Error` enum + `Result<T>`; `?` over `.unwrap()` in library code.
+- Errors via the core `Error` enum + `Result<T>`.
 - Timekeeping is never sleep-based.
 - Every `#[repr(C)]` type crossing the IPC wire has a layout regression test.
 - Git deps pinned by `rev = "<sha>"` or `tag`; never bare `git` / `branch`, including
