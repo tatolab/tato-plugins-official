@@ -7,9 +7,9 @@ describes.
 - **Work is tracked in Linear**, never in GitHub issues: team Tatolab, issues `TAT-n`.
 - Never write documentation, plans or ADRs, and never create Linear projects or milestones; planning happens in Linear, in separate sessions.
 - **One copy of everything.** A skill or agent exists once. Something only one repository needs
-  carries that repository's prefix (`streamlib-`, `studio-`, `site-`). What a shared skill needs
-  from a repository lives in that repository's `CLAUDE.md` section `## Before you push`, never in
-  the skill.
+  carries that repository's prefix (`streamlib-`, `studio-`, `site-`). The gates, reviews and proof
+  each repository's changes need are listed per repository in the `implement` skill's step 8, not
+  in the repositories' `CLAUDE.md` files.
 - **Paths inside the plugin** are written `${CLAUDE_PLUGIN_ROOT}/…` in skills, agents and hooks.
   Repository paths stay relative to the repository a session works in.
 - **No hooks.** What a session may run is decided by Claude Code's permissions and auto mode
