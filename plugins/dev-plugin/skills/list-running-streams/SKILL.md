@@ -5,7 +5,7 @@ description: List the streams the machine's one StreamLib runtime holds — runn
 
 # list-running-streams
 
-The entry point for every control-verb workflow. A machine runs one runtime, `tatolabd`, and every stream on it loads into that one runtime — each Python processor still runs in its own helper process; `tatolab streams` asks the runtime which streams it holds. Every verb reaches the runtime through one socket at a fixed path, `local-api.sock` in this user's runtime directory (`$XDG_RUNTIME_DIR/streamlib/`, else `/tmp/streamlib-<uid>/`), so no verb takes a target flag. A runtime on another machine is reached by running the verb there (`ssh <machine> tatolab streams`).
+The entry point for every control-verb workflow. A machine runs one runtime, `tatolabd`, and every stream on it loads into that one runtime — each Python node still runs in its own helper process; `tatolab streams` asks the runtime which streams it holds. Every verb reaches the runtime through one socket at a fixed path, `local-api.sock` in this user's runtime directory (`$XDG_RUNTIME_DIR/streamlib/`, else `/tmp/streamlib-<uid>/`), so no verb takes a target flag. A runtime on another machine is reached by running the verb there (`ssh <machine> tatolab streams`).
 
 ## Steps
 

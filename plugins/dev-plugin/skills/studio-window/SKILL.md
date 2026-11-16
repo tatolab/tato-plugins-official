@@ -34,7 +34,7 @@ description: How tatolab-app's window is built from the design system. Use when 
   Screens are built from the design system, not from shadcn directly and not from hand-built
   controls. So a change to how something looks is made once, in the design system or the tokens,
   and applies everywhere.
-- **The window is React and Tailwind v4.** Views are React components in `apps/tato-app/src/renderer/views/`, beside the
+- **The window is React and Tailwind v4.** Views are React components (`*_view.tsx`) in the feature folders under `apps/tato-app/src/renderer/`, beside the
   DOM pages it still hosts until they are rebuilt; presentation is pure functions
   (`apps/tato-app/src/renderer/presentation/`) with vitest tests; and the backend is the `TatolabBackend` contract with an
   Electron and a mock implementation (`apps/tato-app/src/renderer/backend/`). Extend those layers; never add a parallel
