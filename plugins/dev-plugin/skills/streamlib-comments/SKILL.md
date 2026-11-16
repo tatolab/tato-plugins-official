@@ -35,8 +35,8 @@ subagents, reviewers included, push back on a comment wherever clearer code woul
 - Don't leave per-line play-by-play.
 - Don't leave breadcrumbs: `moved-to`, `was`, `carved-from`.
 - Don't write multi-paragraph rustdoc essays.
-- Don't put `# Example` or `# Usage` sections in a doc comment.
-- Don't put ASCII or markdown tables in a doc comment.
+- Don't put an `Example` or `Usage` section, or an ASCII or markdown table, in a Python
+  docstring or a TypeScript doc comment.
 
 ## Do
 - Give each public item a one-line doc.
